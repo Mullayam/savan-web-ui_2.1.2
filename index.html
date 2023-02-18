@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <script src="assets/script.js" defer></script>
+    <script src="assets/custom.js" defer></script>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="player">
+      <div class="wrapper">
+        <div class="details">
+        <div class="topbar">
+            <div class="now-playing">PLAYING x OF y</div>
+          <div>
+            <span class="material-icons search"> search </span>
+          </div>
+        </div>
+          <div class="track-art"></div>
+          <div class="track-name">Track Name</div>
+          <div class="track-artist">Track Artist</div>
+        </div>
+
+        <div class="slider_container">
+          <div class="current-time">00:00</div>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="0"
+            class="seek_slider"
+            onchange="seekTo()"
+          />
+          <div class="total-duration">00:00</div>
+        </div>
+
+        <div class="slider_container">
+          <i class="fa fa-volume-down"></i>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="99"
+            class="volume_slider"
+            onchange="setVolume()"
+          />
+          <i class="fa fa-volume-up"></i>
+        </div>
+
+        <div class="buttons">
+          <div class="random-track" onclick="randomTrack()">
+            <i class="fas fa-random fa-2x" title="random"></i>
+          </div>
+          <div class="prev-track" onclick="prevTrack()">
+            <span class="material-icons md-48"> skip_previous </span>
+          </div>
+          <div class="playpause-track" onclick="playpauseTrack()">
+            <span class="material-icons md-48">play_circle</span>
+          </div>
+          <div class="next-track" onclick="nextTrack()">
+            <span class="material-icons md-48"> skip_next </span>
+          </div>
+
+          <div class="repeat-track" onclick="repeatTrack()">
+            <i class="fa fa-repeat fa-2x" title="repeat"></i>
+          </div>
+          <div class="repeat-track" onclick="openPlaylist()">
+            <span class="material-icons md-48" title="Show Playlist">
+              playlist_play
+            </span>
+          </div>
+        </div>
+
+        <div id="wave">
+          <span class="stroke"></span>
+          <span class="stroke"></span>
+          <span class="stroke"></span>
+          <span class="stroke"></span>
+          <span class="stroke"></span>
+          <span class="stroke"></span>
+          <span class="stroke"></span>
+        </div>
+      </div>
+    </div>
+    <div id="context-menu">
+      <div class="item">Menu Item 1</div>
+      <div class="item">Menu Item 2</div>
+      <div class="item">Menu Item 3</div>
+      <div class="item"><a href="">Repo Link</a></div>
+      <!-- <div class="item"> <a href="#m2-o" class="link-1" id="m2-c">Modal 2</a></div> -->
+      <div class="item"><a href="#devloperInfo" role="button">See Info</a></div>
+    </div>
+
+    <!-- <div class="box">   
+  <div class="modal-container" id="m2-o" style="--m-background: hsla(0, 0%, 0%, .4);">
+    <div class="modal">
+      <h1 class="modal__title">Modal 2 Title</h1>
+      <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex dicta maiores libero minus obcaecati iste optio, eius labore repellendus.</p>
+      <button class="modal__btn">Button &rarr;</button>
+      <button class="modal__btn">Button &rarr;</button>
+      <a href="#m2-c" class="link-2"></a>
+    </div>
+  </div>
+</div> -->
+    <div class="modal-wrapper" id="devloperInfo">
+      <div class="modal-body card">
+        <div class="modal-header">
+          <h2 class="heading">Devlopers</h2>
+          <a
+            href="#!"
+            role="button"
+            class="close"
+            aria-label="close this modal"
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"
+              />
+            </svg>
+          </a>
+        </div>
+        <h1>Backend Server : <code>Wiz64 & ENJOYS</code></h1>
+        <h1>Frontend (Manipulated) : <code>ENJOYS</code></h1>
+      </div>
+      <a href="#!" class="outside-trigger"></a>
+    </div>
+    <!-- Playlsit overlay -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <a href="javascript:void(0)" class="closebtn" onclick="closePlaylist()"
+        >&times;</a
+      >
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a href="#"
+          >About
+          <div class="buttons">
+            <div class="repeat-track">
+              <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">
+                  h
+                  <span class="material-icons md-48" title="Download This Song">
+                    download_for_offline
+                  </span>
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#">320 Kbps</a>
+                  <a href="#">198 Kbps</a>
+                  <a href="#">160 Kbps</a>
+                  <a href="#">48 Kbps</a>
+                </div>
+              </div>
+            </div>
+          </div></a
+        >
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </body>
+</html>
