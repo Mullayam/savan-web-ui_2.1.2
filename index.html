@@ -32,12 +32,14 @@
     <div class="player">
       <div class="wrapper">
         <div class="details">
-        <div class="topbar">
+          <div class="topbar">
             <div class="now-playing">PLAYING x OF y</div>
-          <div>
-            <span class="material-icons search"> search </span>
+            <div>
+              <a data-modal="#modal2" class="modal__trigger">
+                <span class="material-icons search icon_en"> search</span>
+              </a>
+            </div>
           </div>
-        </div>
           <div class="track-art"></div>
           <div class="track-name">Track Name</div>
           <div class="track-artist">Track Artist</div>
@@ -105,27 +107,17 @@
       </div>
     </div>
     <div id="context-menu">
-      <div class="item">Menu Item 1</div>
-      <div class="item">Menu Item 2</div>
-      <div class="item">Menu Item 3</div>
+      <div class="item">Share Me</div>
       <div class="item"><a href="">Repo Link</a></div>
-      <!-- <div class="item"> <a href="#m2-o" class="link-1" id="m2-c">Modal 2</a></div> -->
+      <div class="item">
+        <a href="" data-modal="#modal" class="modal__trigger">Modal 1</a>
+      </div>
       <div class="item"><a href="#devloperInfo" role="button">See Info</a></div>
     </div>
 
-    <!-- <div class="box">   
-  <div class="modal-container" id="m2-o" style="--m-background: hsla(0, 0%, 0%, .4);">
-    <div class="modal">
-      <h1 class="modal__title">Modal 2 Title</h1>
-      <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex dicta maiores libero minus obcaecati iste optio, eius labore repellendus.</p>
-      <button class="modal__btn">Button &rarr;</button>
-      <button class="modal__btn">Button &rarr;</button>
-      <a href="#m2-c" class="link-2"></a>
-    </div>
-  </div>
-</div> -->
+    <!-- Devlopers info Modal -->
     <div class="modal-wrapper" id="devloperInfo">
-      <div class="modal-body card">
+      <div class="modal-body modalCard">
         <div class="modal-header">
           <h2 class="heading">Devlopers</h2>
           <a
@@ -143,6 +135,7 @@
         </div>
         <h1>Backend Server : <code>Wiz64 & ENJOYS</code></h1>
         <h1>Frontend (Manipulated) : <code>ENJOYS</code></h1>
+        <a data-modal="#modal3" class="modal__trigger">Contact Us</a>
       </div>
       <a href="#!" class="outside-trigger"></a>
     </div>
@@ -152,33 +145,141 @@
       <a href="javascript:void(0)" class="closebtn" onclick="closePlaylist()"
         >&times;</a
       >
-
       <!-- Overlay content -->
       <div class="overlay-content">
-        <a href="#"
-          >About
-          <div class="buttons">
-            <div class="repeat-track">
-              <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">
-                  h
-                  <span class="material-icons md-48" title="Download This Song">
-                    download_for_offline
-                  </span>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                  <a href="#">320 Kbps</a>
-                  <a href="#">198 Kbps</a>
-                  <a href="#">160 Kbps</a>
-                  <a href="#">48 Kbps</a>
+        <div><h1>Playlist</h1></div>
+        <div id="download-list">        
+          <li>
+            <div class="card card-5"> 
+              <h2 class="card__title">
+                Ut aliquip ex ea commodo consequat. Duis aute irure dolor.
+              </h2>
+              <p class="card__apply">
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">
+                      Download
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a href="#">320 Kbps</a>
+                      <a href="#">160 Kbps</a>
+                      <a href="#">96 Kbps</a>
+                      <a href="#">48 Kbps</a>
+                    </div>
                 </div>
-              </div>
+                <!-- <a href="javascript:void(0)" class="dropbtn" style="width
+                :auto!important;">Play</a> -->
+              </p>
             </div>
-          </div></a
-        >
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+          </li>
+        </div>
+      </div>
+    </div>
+    <!-- Search Modal -->
+    <div
+      id="modal2"
+      class="modal modal--align-top modal__bg"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal__dialog">
+        <div class="modal__content">
+          <h1>Search Your Songs Heres</h1>
+          <form class="text-center" action="#" method="get">
+            <div>
+              <input class="SearchInput"" type="text" id="saavn-search-box"
+              placeholder="Enter Name, Year, Artist" /><button
+                class="btn btn-primary"
+                id="saavn-search-trigger"
+                type="submit"
+                style="display: inline"
+                onclick="SaavnSearch()"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+          <div id="saavn-results">
+            <div class="card card-4" style="position: relative!important;margin-left: auto!important;">               
+              <h2 class="card__title">
+               Song Details goest here
+              </h2>
+                 <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">
+                      Download
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a href="#">320 Kbps</a>
+                      <a href="#">160 Kbps</a>
+                      <a href="#">96 Kbps</a>
+                      <a href="#">48 Kbps</a>
+                    </div>
+                  </div>
+              <p class="card__apply">
+                <a class="card__link" href="#">Play Now</a>                
+              </p>
+            </div>
+          </div>
+          <p>Dont Crash Server, Have Patience Bruhhhhh...</p>
+
+          <!-- modal close button -->
+          <a href="" class="modal__close demo-close">
+            <svg class="" viewBox="0 0 24 24">
+              <path
+                d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"
+              />
+              <path d="M0 0h24v24h-24z" fill="none" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Extra Modal 1 -->
+    <div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
+      <div class="modal__dialog">
+        <div class="modal__content">
+          <h1>Modal</h1>
+          <p>
+            Church-key American Apparel trust fund, cardigan mlkshk small batch
+            Godard mustache pickled bespoke meh seitan. Wes Anderson
+            farm-to-table vegan, kitsch Carles 8-bit gastropub paleo YOLO jean
+            shorts health goth lo-fi. Normcore chambray locavore Banksy, YOLO
+            meditation master cleanse readymade Bushwick.
+          </p>
+
+          <!-- modal close button -->
+          <a href="" class="modal__close demo-close">
+            <svg class="" viewBox="0 0 24 24">
+              <path
+                d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"
+              />
+              <path d="M0 0h24v24h-24z" fill="none" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Extra Modal 2 -->
+    <div id="modal3" class="modal modal__bg" role="dialog" aria-hidden="true">
+      <div class="modal__dialog">
+        <div class="modal__content">
+          <h1>Modal 3</h1>
+          <p>
+            Church-key American Apparel trust fund, cardigan mlkshk small batch
+            Godard mustache pickled bespoke meh seitan. Wes Anderson
+            farm-to-table vegan, kitsch Carles 8-bit gastropub paleo YOLO jean
+            shorts health goth lo-fi.
+          </p>
+
+          <!-- modal close button -->
+          <a href="" class="modal__close demo-close">
+            <svg class="" viewBox="0 0 24 24">
+              <path
+                d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"
+              />
+              <path d="M0 0h24v24h-24z" fill="none" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </body>
