@@ -11,8 +11,8 @@ Preview is available at the links below : <br>
 
 ## Details
 > Status : `In Development`<br>
-Version : `v2.1` <br>
-Developers: `@wiz64`
+Version : `v2.1.2` <br>
+Developers: `[@wiz64,@Mullayam]`
 ## Features
 - ⭕ All basic features of a music player
 - :green_apple: Download MP3 Songs with metadata
